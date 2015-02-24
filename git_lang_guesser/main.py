@@ -8,15 +8,7 @@ from . import git_requester
 from . import guess_lang
 
 
-def main():
-    parser = argparse.ArgumentParser("git_lang_guesser")
-    parser.add_argument("username")
-    parser.add_argument("--list-all", action="store_true")
-
-    args = parser.parse_args()
-    username = args.username
-    list_all = args.list_all
-
+def do_guess(username, list_all):
     try:
         repos = git_requester.get_public_repos_for_user(username)
     except exceptions.RequestFailed as exc:
@@ -38,6 +30,19 @@ def main():
     else:
         favourite = guess_lang.guess_favourite(repos)
         print(favourite)
+
+
+def main():
+    parser = argparse.ArgumentParser("git_lang_guesser")
+    parser.add_argument("username")
+    parser.add_argument("--list-all", action="store_true")
+
+    args = parser.parse_args()
+    username = args.username
+    list_all = args.list_all
+
+    do_guess(username, list_all)
+
 
 if __name__ == "__main__":
     main()
