@@ -9,7 +9,7 @@ from . import guess_lang
 
 
 def main():
-    parser = argparse.ArgumentParser("git-lang-guesser")
+    parser = argparse.ArgumentParser("git_lang_guesser")
     parser.add_argument("username")
     parser.add_argument("--list-all", action="store_true")
 
