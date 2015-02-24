@@ -6,27 +6,27 @@ from git_lang_guesser import guess_lang
 LANGUAGE = "language"
 
 
-exampleData = [
+example_data = [
     {LANGUAGE: "HTML"},
     {LANGUAGE: "Java"},
     {LANGUAGE: "Python"},
     {LANGUAGE: "Python"},
     {LANGUAGE: "C"},
 ]
-expectedCount = {
+expected_count = {
     "HTML": 1,
     "Java": 1,
     "Python": 2,
     "C": 1,
 }
-expectedFavourite = "Python"
+expected_favourite = "Python"
 
 
 class TestCountLanguages(object):
     def test_basic(self):
         """Ensure basic usage does the right thing"""
-        counter = guess_lang.count_languages(exampleData)
-        assert(dict(counter) == expectedCount)
+        counter = guess_lang.count_languages(example_data)
+        assert(dict(counter) == expected_count)
 
     def test_empty(self):
         """Ensure we can an empty repository list"""
@@ -48,8 +48,8 @@ class TestCountLanguages(object):
 class TestGuessFavourite(object):
     def test_basic(self):
         """Ensure basic usage does the right thing"""
-        favourite = guess_lang.guess_favourite(exampleData)
-        assert(favourite == expectedFavourite)
+        favourite = guess_lang.guess_favourite(example_data)
+        assert(favourite == expected_favourite)
 
     def test_empty(self):
         """Ensure we can an empty repository list"""
