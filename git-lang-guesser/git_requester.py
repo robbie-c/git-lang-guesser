@@ -21,11 +21,11 @@ def get_user(username):
     return do_request(USER_URL, {"username": username})
 
 
-def get_public_projects_for_user(username):
+def get_public_repos_for_user(username):
     return do_request(USER_PUBLIC_REPO_URL, {"username": username})
 
 
 if __name__ == "__main__":
     import pprint
     pprint.pprint(get_user("robbie-c"))
-    pprint.pprint(get_public_projects_for_user("robbie-c"))
+    pprint.pprint(get_public_repos_for_user("robbie-c"))
