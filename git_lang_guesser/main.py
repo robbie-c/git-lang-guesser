@@ -9,6 +9,8 @@ from . import guess_lang
 
 
 def do_guess(username, list_all):
+    repos = []  # silence PyCharm warning
+
     try:
         repos = git_requester.get_public_repos_for_user(username)
     except exceptions.RequestFailed as exc:
@@ -18,7 +20,7 @@ def do_guess(username, list_all):
         else:
             print("HTTP error code {0}: {1}".format(exc.response.status_code, exc.response.text))
             exit(1)
-        repos = []  # silence PyCharm warning
+
 
     if not repos:
         print("User does not have any public repos")
